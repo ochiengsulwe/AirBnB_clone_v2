@@ -7,7 +7,7 @@ if ! dpkg -l | grep -q nginx; then
     sudo apt-get -y install nginx
 fi 
 
-sudo mkdir /data/web_static/releases/test/ /data/web_static/shared/
+sudo mkdir -p /data/web_static/releases/test/ /data/web_static/shared/
 
 echo "<html>
     <head>
