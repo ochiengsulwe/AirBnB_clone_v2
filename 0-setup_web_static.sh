@@ -18,6 +18,10 @@ echo "<html>
     </body>
 </html>" | sudo tee /data/web_static/releases/test/index.html
 
+if [ -L "/data/web_static/current" ]; then
+    sudo rm /data/web_static/current
+fi
+
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/currrent
 
 sudo chown -R ubuntu:ubuntu /data/
