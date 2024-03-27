@@ -11,6 +11,7 @@ def hello_hbnb():
     """Returns a simple greeting."""
     return "Hello HBNB!"
 
+
 @app.route('/hbnb', strict_slashes=False)
 def display():
     """Displays a simple String type."""
