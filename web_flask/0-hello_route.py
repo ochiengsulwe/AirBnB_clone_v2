@@ -10,8 +10,8 @@ def hello_hbnb():
     """Routing to root, with strict_slashes to ensure the URL works when
         when it ends both with or without the `/`.
     """
-    return "Hell0 HBNB!"
+    return "Hello HBNB!"
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=500)
+    app.run(host='0.0.0.0', port=5000)
