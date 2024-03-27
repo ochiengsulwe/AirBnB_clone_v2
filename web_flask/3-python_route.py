@@ -29,6 +29,7 @@ def c_is_fun(text):
     return f"C {text}"
 
 
+# @app.route('/python/', defaults={'text': 'is_cool', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python_cool(text="is cool"):
     """Prints Python plus the string argument."""
