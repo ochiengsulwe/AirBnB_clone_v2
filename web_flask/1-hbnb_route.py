@@ -1,21 +1,25 @@
 #!/usr/bin/python3
-"""Starts a Flask web application."""
+"""Start a Flask web applicaton"""
 
 from flask import Flask
-
-
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
 def hello_hbnb():
-    """Returns a simple greeting."""
+    """
+    Routing to root, strict_slashes ensure
+    the URL works when it ends both with or without the /
+    """
     return "Hello HBNB!"
 
 
 @app.route('/hbnb', strict_slashes=False)
-def display():
-    """Displays a simple String type."""
+def hbnb():
+    """
+    Routing to /hbnb, strict_slashes ensure
+    the URL works when it ends both with or without the /
+    """
     return "HBNB"
 
 

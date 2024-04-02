@@ -1,55 +1,52 @@
 #!/usr/bin/python3
-"""Starts a Flask web application."""
+"""Start a Flask web applicaton"""
 
-from flask import Flask
-from flask import render_template
-
-
+from flask import Flask, render_template
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
 def hello_hbnb():
-    """Returns a simple greeting."""
+    """
+    Routing to root, strict_slashes ensure
+    the URL works when it ends both with or without the /
+    """
     return "Hello HBNB!"
 
 
 @app.route('/hbnb', strict_slashes=False)
-def display():
-    """Displays a simple String type."""
+def hbnb():
+    """
+    Routing to /hbnb, strict_slashes ensure
+    the URL works when it ends both with or without the /
+    """
     return "HBNB"
 
 
 @app.route('/c/<text>', strict_slashes=False)
 def c_is_fun(text):
-    """Prints C is fun.
-
-        Replaces '_' with white space.
-    """
+    """Routing to C using Variables"""
     text = text.replace('_', ' ')
-    return f"C {text}"
+    return "C {}".format(text)
 
 
-@app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
+@app.route('/python/', defaults={'text': 'is_cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def python_cool(text):
-    """Prints Python plus the string argument."""
+def python_is_cool(text):
+    """Routing to python with default value using Variables"""
     text = text.replace('_', ' ')
-    return f"Python {text}"
+    return "Python {}".format(text)
 
 
 @app.route('/number/<int:n>', strict_slashes=False)
-def int_check(n):
-    """Only returns n if n is of type int."""
-    if isinstance(n, int):
-        return f"{n} is a number"
-    else:
-        return "404"
+def is_a_numbet(n):
+    """Routing to n for intergers only"""
+    return "{} is a number".format(n)
 
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
-def number_template(n=None):
-    """Renders a HTML page"""
+def is_a_numbet_template(n=None):
+    """Render a HTML page"""
     return render_template('5-number.html', n=n)
 
 
