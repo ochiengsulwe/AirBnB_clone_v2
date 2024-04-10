@@ -2,6 +2,8 @@
 """Start a Flask web applicaton"""
 
 from flask import Flask
+from markupsafe import escape
+
 app = Flask(__name__)
 
 
@@ -27,7 +29,7 @@ def hbnb():
 def c_is_fun(text):
     """Routing to C using Variables"""
     text = text.replace('_', ' ')
-    return "C {}".format(text)
+    return f"C {escape(text)}"
 
 
 if __name__ == "__main__":

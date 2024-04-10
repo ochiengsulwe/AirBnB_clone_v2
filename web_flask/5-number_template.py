@@ -2,6 +2,8 @@
 """Start a Flask web applicaton"""
 
 from flask import Flask, render_template
+from markupsafe import escape
+
 app = Flask(__name__)
 
 
@@ -23,29 +25,29 @@ def hbnb():
     return "HBNB"
 
 
-@app.route('/c/<text>', strict_slashes=False)
+@app.route('/c/<string:text>', strict_slashes=False)
 def c_is_fun(text):
     """Routing to C using Variables"""
     text = text.replace('_', ' ')
-    return "C {}".format(text)
+    return f"C {escape(text)}"
 
 
 @app.route('/python/', defaults={'text': 'is_cool'}, strict_slashes=False)
-@app.route('/python/<text>', strict_slashes=False)
+@app.route('/python/<string:text>', strict_slashes=False)
 def python_is_cool(text):
     """Routing to python with default value using Variables"""
     text = text.replace('_', ' ')
-    return "Python {}".format(text)
+    return f"Python {escape(text)}"
 
 
 @app.route('/number/<int:n>', strict_slashes=False)
 def is_a_numbet(n):
     """Routing to n for intergers only"""
-    return "{} is a number".format(n)
+    return f"{n} is a number"
 
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
-def is_a_numbet_template(n=None):
+def is_a_number_template(n=None):
     """Render a HTML page"""
     return render_template('5-number.html', n=n)
 
