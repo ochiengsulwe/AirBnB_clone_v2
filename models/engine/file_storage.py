@@ -26,15 +26,15 @@ class FileStorage:
         Return:
             returns a dictionary of __object
         """
-        dic = {}
+        cls_dict = {}
         if cls:
             dictionary = self.__objects
             for key in dictionary:
                 partition = key.replace('.', ' ')
                 partition = shlex.split(partition)
                 if (partition[0] == cls.__name__):
-                    dic[key] = self.__objects[key]
-            return (dic)
+                    cls_dict[key] = self.__objects[key]
+            return (cls_dict)
         else:
             return self.__objects
 
@@ -71,7 +71,7 @@ class FileStorage:
         """ delete an existing element
         """
         if obj:
-            key = "{}.{}".format(type(obj).__name__, obj.id)
+            key = f"{type(obj).__name__}.{obj.id}"
             del self.__objects[key]
 
     def close(self):

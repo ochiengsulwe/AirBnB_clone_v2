@@ -135,11 +135,11 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        elif arg[0] not in HBNBCommand.classes:
+        elif arg[0] not in globals():
             print("** class doesn't exist **")
             return
 
-        new_instance = eval(arg[0])()
+        new_instance = globals()[arg[0]]
         print(arg[0])
         arg.pop(0)
         for item in arg:
